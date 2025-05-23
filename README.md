@@ -1,7 +1,6 @@
 # Path Planning using Hybrid RRT-A* algorithm and Case Study
 > This repo brings you robust, optimal path planning for non-holonomic mobile robots (TurtleBot3) using RRT-A* and Informed RRT*—tested in both 2D and Gazebo. Follow the steps below to get rolling!
-
-For more details and project breakdown, please check out my blog: [link](https://josephkatakam.vercel.app/projects/nav_hybrid_rrt)
+- For more details and project breakdown, please check out my blog: [link](https://josephkatakam.vercel.app/projects/nav_hybrid_rrt)
 ---
 
 ### 🚦 Step 1: Pre-Requisites
