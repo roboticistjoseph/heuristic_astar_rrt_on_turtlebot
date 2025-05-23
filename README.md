@@ -1,70 +1,106 @@
-# heuristic_rrt_on_turtlebot
+# Path Planning using Hybrid RRT-A* algorithm and Case Study
+> This repo brings you robust, optimal path planning for non-holonomic mobile robots (TurtleBot3) using RRT-A* and Informed RRT*—tested in both 2D and Gazebo. Follow the steps below to get rolling!
 
------------------------------------------------------------------------------------------------------------------
-ENPM 661- Planning for Autonomous Robots;
------------------------------------------------------------------------------------------------------------------
+For more details and project breakdown, please check out my blog: [link](https://josephkatakam.vercel.app/projects/nav_hybrid_rrt)
+---
 
-Name: Joseph Pranadeer Reddy Katakam
-UID: 117517958
+### 🚦 Step 1: Pre-Requisites
 
-Name: Bharadwaj Chukkala
-UID: 118341705
+- **Ubuntu 18.04**
+- **ROS Melodic**
+- **Gazebo 9.1**
+- **Turtlebot3 Packages**
 
-----------------------------------------------------------------------------------------------------------------
+---
 
-Project 5 Phase 2: Path Planning for a non-holonomic mobile robot in an obstacle space using A* and RRT
+### 🧰 Step 2: Check for Python Libraries
 
-GitHub Link: https://github.com/roboticistjoseph/heuristic_rrt_on_turtlebot
+Make sure you have these installed (use `pip` or `apt` as needed):
 
-Video Drive Link: https://drive.google.com/drive/folders/1JhDIIFGlIPOOEg2e1zyCKsxo-PngwNvd?usp=sharing
+```python
+import numpy
+import matplotlib.patches
+import math
+import rospy
+import time
+import heapq
+import random
+import sys
+import pygame
+```
 
------------------------------------------------------------------------------------------------------------------
+---
 
-####### How to run the package #########
+### 🛠️ Step 3: Installing TurtleBot3 Packages
 
-Step 1: Pre Requisites
+```bash
+mkdir -p planning_ws/src
+cd planning_ws
+catkin_make
+source devel/setup.bash
 
-	--> Ubuntu 18.04
-	--> ROS Melodic
-	--> Gazebo 9.1
-	--> Turtlebot3 Packages
+# Clone TurtleBot3 repositories
+git clone https://github.com/ROBOTIS-GIT/turtlebot3.git src/turtlebot3
+git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git src/turtlebot3_msgs
+git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git src/turtlebot3_simulations
 
-------------------------------------------------------------------------------------------
-Step 2: Check for libraries
+cd ..
+catkin_make
+```
 
-	--> import numpy
-	--> import matplotlib.patches
-	--> import math
-	--> import rospy
-	--> import time
-	--> import heapq
-	--> import random
-	--> import sys
-	--> import pygame
+---
 
-------------------------------------------------------------------------------------------
-Step 3: Installing Turtlebot Package (paste the following commands line by line)
-	
-	--> mkdir planning_ws/src
-	--> catkin_make
-	--> source devel/setup.bash
-	--> git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
-	--> git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-	--> git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-	--> cd  ../ && catkin_make
+### 🚀 Step 4: Running the Package
 
--------------------------------------------------------------------------------------------
-Step 4: Running the package
-	
-	--> Download the package project_5 and paste it in your workspace.
-	--> build the package using 'catkin_make'
-	--> source it 'source devel/setup.bash'
-	--> Run "export TURTLEBOT3_MODEL=burger" in the Terminal
-	--> make the node executable, by navigating into the 'nodes' folder and running the command 'chmod +x task'
-	--> launch the node and gazebo environment using 'roslaunch project_5 proj.launch'
-	--> give clearance by typing in a value between "0.03-0.07"
-	--> upon prompting give RPMs (suggested value is 10)
-	--> The node will start running in a couple of seconds
-	--> The turtlebot  will move to the goal in a minute.
------------------------------------------------------------
+1. **Download the package:**  
+   Place `project_5` in your `planning_ws/src` directory.
+
+2. **Build the package:**  
+   ```bash
+   catkin_make
+   ```
+
+3. **Source your workspace:**  
+   ```bash
+   source devel/setup.bash
+   ```
+
+4. **Set the TurtleBot3 model:**  
+   ```bash
+   export TURTLEBOT3_MODEL=burger
+   ```
+
+5. **Make the node executable:**  
+   ```bash
+   cd src/project_5/nodes
+   chmod +x task
+   ```
+
+6. **Launch the node and Gazebo environment:**  
+   ```bash
+   roslaunch project_5 proj.launch
+   ```
+
+7. **Configure at runtime:**  
+   - Enter **clearance** value (recommended: `0.03` to `0.07`)
+   - Enter **RPM** value when prompted (suggested: `10`)
+
+8. **Watch the magic:**  
+   - The node will initialize in a few seconds.
+   - TurtleBot3 will autonomously navigate to the goal in about a minute.
+
+---
+
+### 🏁 That’s it!
+
+You’re all set to explore optimal path planning with RRT-A* and Informed RRT* on your TurtleBot3. For troubleshooting or more details, check the code comments and documentation.
+
+---
+
+> **Pro Tip:**  
+> Tweak the clearance and RPM values to see how your TurtleBot3 handles different environments and constraints!
+
+---
+
+**Happy path planning!** 🚗💨
 
